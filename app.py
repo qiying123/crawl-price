@@ -20,8 +20,6 @@ def get_connection():
             password=st.secrets["db_password"],
             db=st.secrets["db_name"],
             charset='utf8mb4',
-            # 你原来验证过这个配置能跑，我们就完全不动它
-            # cursorclass=pymysql.cursors.DictCursor,
             ssl={'ssl': {}}
         )
     except Exception as e:
@@ -52,7 +50,7 @@ def search_products(keyword):
                   """
             params = ()
 
-        # pandas read_sql 完美支持 pymysql，不需要改
+
         df = pd.read_sql(sql, conn, params=params)
         return df
 
@@ -60,7 +58,6 @@ def search_products(keyword):
         st.error(f"查询出错: {e}")
         return pd.DataFrame()
     finally:
-        # ✅ 用完就关，保证不占用资源，也不会超时
         conn.close()
 
 # ================= 网页 UI 布局 =================
@@ -105,4 +102,5 @@ else:
     if keyword:
         st.warning("没有找到相关商品，请尝试其他关键词。")
     else:
+
         st.warning("数据库中暂无数据，请检查爬虫是否运行。")
