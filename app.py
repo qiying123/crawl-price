@@ -368,7 +368,7 @@ elif selected_category:
 
 else:
     # === 场景 C：默认主页 ===
-    st.markdown("## 👋 欢迎使用商品比价系统")
+    st.markdown("## 商品比价系统")
     st.divider()
     st.info("💡 **操作提示**：在上方搜索，或从左侧栏选择分类进行浏览。")
     st.subheader("🎲 随机推荐 (30条)")
@@ -380,4 +380,4 @@ else:
 
 # 页脚
 st.markdown("---")
-st.caption("© 2025 Internal Price Monitor System | Powered by TiDB Serverless")
+st.caption("© 2025 Price Monitor System | Powered by TiDB Serverless")
