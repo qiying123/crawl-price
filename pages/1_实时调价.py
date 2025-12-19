@@ -19,11 +19,11 @@ def get_price_update_connection():
     try:
         # 注意：这里使用了与主应用不同的数据库配置
         return pymysql.connect(
-            host=st.secrets["db_host"],
-            port=st.secrets["db_port"],
-            user=st.secrets["db_user"],
-            password=st.secrets["db_password"],
-            db=st.secrets["db_name"],
+            host=st.secrets["ly_card_db_host"],
+            port=st.secrets["ly_card_db_port"],
+            user=st.secrets["ly_card_db_user"],
+            password=st.secrets["ly_card_db_password"],
+            db=st.secrets["ly_card_db_name"],
             charset='utf8mb4',
             ssl={'ssl': {}}
         )
@@ -39,7 +39,7 @@ def get_price_update_connection():
     #         ssl={'ssl': {}}
     #     )
     except Exception as e:
-        st.error(f"数据库 'xinqidian_index' 连接失败: {e}")
+        st.error(f"数据库 'ly_card' 连接失败: {e}")
         return None
 
 # ================= 3. 数据查询逻辑 =================
